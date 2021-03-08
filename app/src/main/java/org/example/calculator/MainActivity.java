@@ -90,6 +90,26 @@ public class MainActivity extends AppCompatActivity {
         buttonMultiply.setOnClickListener(opListener);
         buttonMinus.setOnClickListener(opListener);
         buttonPlus.setOnClickListener(opListener);
+
+        Button buttonNeg = findViewById(R.id.buttonNeg);
+        buttonNeg.setOnClickListener(v -> {
+            String value = newNumber.getText().toString();
+            if (value.length() == 0) {
+                newNumber.setText("-");
+            } else {
+                try {
+                    Double doubleValue = Double.valueOf(value);
+                    doubleValue *= -1;
+                    newNumber.setText(doubleValue.toString());
+
+                } catch (NumberFormatException e) {
+                    // newNumber was "-" or "."  -> clear
+                    newNumber.setText("");
+                }
+            }
+
+        });
+
     }
 
     private void performOperation(Double value, String operation) {
@@ -133,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
 
         outState.putString(STATE_PENDING_OPERATION, pendingOperation);
-        if (operand1 != null){
+        if (operand1 != null) {
             outState.putDouble(STATE_OPERAND1, operand1);
         }
         super.onSaveInstanceState(outState);
@@ -142,14 +162,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
 
-
         super.onRestoreInstanceState(savedInstanceState);
         pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION);
         operand1 = savedInstanceState.getDouble(STATE_OPERAND1);
         displayOperation.setText(pendingOperation);
-
-
     }
+
 }
 
 
