@@ -110,6 +110,12 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        Button buttonDel = findViewById(R.id.buttonDel);
+        buttonDel.setOnClickListener(v -> {
+            result.setText("");
+            operand1 = null;
+        });
+
     }
 
     private void performOperation(Double value, String operation) {
@@ -146,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         result.setText(operand1.toString());
         newNumber.setText("");
+
 
     }
 

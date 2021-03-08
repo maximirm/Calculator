@@ -7,6 +7,16 @@
         tools:context=".MainActivity"
         android:minWidth="48dp">
 
+    <Button
+            android:text="del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDel"
+            android:minWidth="48dp"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/buttonMultiply"
+            app:layout_constraintStart_toStartOf="@+id/buttonNeg" />
+
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
